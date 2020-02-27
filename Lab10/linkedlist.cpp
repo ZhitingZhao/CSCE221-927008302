@@ -31,7 +31,10 @@ Node* push(Node* head, int new_data) {
    */
 
    // Your implementation here
-
+    Node *dataAdd = new Node (new_data);
+    dataAdd->next = head;
+    head = dataAdd;
+    return head;
 }
 
 void print(Node* head) { 
@@ -45,6 +48,11 @@ void print(Node* head) {
    */
 
    // Your implementation here
+    while (head != NULL){
+        cout << head->data << "->";
+        head = head->next;
+    }
+    cout << "NULL" << endl;
 
 }
 
@@ -65,7 +73,10 @@ bool isEmpty(Node* head) {
    */
 
    // Your implementation here
-
+    if (head == NULL){
+        return true;
+    }
+    return false;
 }
 
 int size(Node* head) {
@@ -77,6 +88,12 @@ int size(Node* head) {
    */
 
    // Your implementation here
+    int size = 0;
+    while (head != NULL){
+        size = size + 1;
+        head = head->next;
+    }
+    return size;
 
 }
 
@@ -91,6 +108,7 @@ int top(Node* head) {
    */
 
    // Your implementation here
+    return head->data;
 
 }
 
@@ -107,6 +125,8 @@ Node* pop(Node* head) {
    */
 
    // Your implementation here
+    head = head->next;
+    return head;
 
 }
 
@@ -124,6 +144,17 @@ Node* middle_element(Node* head) {
    */
 
    // Your implementation here
+    int size = 0;
+    Node *idx = head;
+    while (head != NULL){
+        size += 1;
+        head = head->next;
+    }
+    int half = size / 2;
+    for (int i = 0; i < half; i++){
+        idx = idx->next;
+    }
+    return idx;
 
 }
 
@@ -141,5 +172,10 @@ Node* remove_middle_element(Node* head, Node* middle_node) {
    */
 
    // Your implementation here
-
+    Node *pre = head;
+    while(pre->next != middle_node){
+        pre = pre->next;
+    }
+    pre->next = middle_node->next;
+    return head;
 }
