@@ -104,7 +104,7 @@ int insertDuble(int x, int dubHash, vector<int> & duble)
   int pos = x % duble.size();
   while(duble.at(pos) != -1 && col < duble.size()){
       col += 1;
-      pos += dubHash;
+      pos += dubHash - x % dubHash;
       pos = pos % duble.size();
       if (x == duble.at(pos)){
           break;
